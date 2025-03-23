@@ -8,7 +8,7 @@ from ultralytics import YOLO
 model = YOLO("yolov8n.pt")
 
 class TrafficImageProcessorApp:
-    def _init_(self, root):
+    def __init__(self, root):
         self.root = root
         self.root.title("Traffic Image Processor")
         self.root.geometry("900x700")
@@ -31,7 +31,7 @@ class TrafficImageProcessorApp:
         self.density_fill = self.density_bar.create_rectangle(0, 0, 0, 30, fill="green")
     
     def upload_image(self):
-        file_path = filedialog.askopenfilename(filetypes=[("Image Files", ".png;.jpg;*.jpeg")])
+        file_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.png;*.jpg;*.jpeg")])
         if not file_path:
             return
         self.process_image(file_path)
